@@ -1,3 +1,7 @@
+def cadastrarAluno():
+    print('-' * 30, '|CADASTRAR ALUNO|', '-' * 30)
+
+
 def exibeMenu():
     while True:
         print('-' * 30, '|MENU PRINCIPAL|', '-' * 30)
@@ -12,6 +16,10 @@ def exibeMenu():
         try:
             opcao = int(input('Digite sua opção desejada: '))
             print()
+
+            if opcao == 1:
+                cadastrarAluno()
+
         except ValueError:
             print('Dígito incorreto!\nDigite somente as opções presentes.')
             print()

@@ -87,8 +87,28 @@ def consultarAluno():
 
 
 def cadastrarNota():
-    
+    while True:
+        print('-' * 30, '|CADASTRAR NOTA|', '-' * 30)
+        print('Opção 1 - Cadastrar nota do teste.')
+        print('Opção 2 - Cadastrar nota da prova.')
 
+        try:
+            opcao = int(input('Digite a opção desejada: '))
+
+            if opcao == 1 or opcao == 2:
+                print('Opção 1 - Português.')
+                print('Opção 2 - História.')
+                print('Opção 3 - Geografia.')
+                print('Opção 4 - Ciências.')
+                print('Opção 5 - Matemática.')
+
+        except ValueError:
+            print('Dígito incorreto!\nDigite somente números.')
+            continue
+
+    for aluno in alunos:
+        if aluno['Matrícula'] == matriculaDigitada:
+            notaTirada = float(input('Digite a nota que o aluno tirou: '))
 
 def exibeMenu():
     while True:

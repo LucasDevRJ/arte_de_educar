@@ -53,6 +53,10 @@ def cadastrarAluno(matricula):
     tipoEnsino = tipoEnsino.upper()
 
     alunos.append([nome, matricula, sobrenome, dataNascimento, tipoEnsino, genero])
+    print('-' * 79)
+
+def consultarAluno():
+
 
 
 def exibeMenu():
@@ -72,6 +76,8 @@ def exibeMenu():
 
             if opcao == 1:
                 cadastrarAluno(contadoraMatricula)
+            elif opcao == 2:
+                consultarAluno()
 
         except ValueError:
             print('Dígito incorreto!\nDigite somente as opções presentes.')

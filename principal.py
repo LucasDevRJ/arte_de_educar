@@ -1,10 +1,10 @@
 contadoraMatricula = 100
+alunos = []
 
 
 def cadastrarAluno(matricula):
     print('-' * 30, '|CADASTRAR ALUNO|', '-' * 30)
 
-    alunos = []
     matricula += 1
 
     nome = str(input('Digite o nome: '))
@@ -52,11 +52,38 @@ def cadastrarAluno(matricula):
     genero = genero.upper()
     tipoEnsino = tipoEnsino.upper()
 
-    alunos.append([nome, matricula, sobrenome, dataNascimento, tipoEnsino, genero])
+    aluno = {
+        'Matrícula': matricula,
+        'Nome': nome,
+        'Sobrenome': sobrenome,
+        'Data de Nascimento': dataNascimento,
+        'Ensino': tipoEnsino,
+        'Gênero': genero
+    }
+
+    alunos.append(aluno.copy())
+
     print('-' * 79)
 
-def consultarAluno():
 
+def consultarAluno():
+    print('-' * 30, '|CONSULTAR ALUNO|', '-' * 30)
+    print('Opção 1 - Consultar todos os alunos.')
+    print('Opção 2 - Consultar um aluno.')
+
+    while True:
+        try:
+            opcao = int(input('Digite sua opção desejada: '))
+            print()
+
+            if opcao == 1:
+                for aluno in alunos:
+                    for key, value in aluno.items():
+                        print('{}:{}'.format(key, value))
+
+        except ValueError:
+            print('Dígito incorreto!\nDigite somente números.')
+            continue
 
 
 def exibeMenu():
@@ -76,7 +103,7 @@ def exibeMenu():
 
             if opcao == 1:
                 cadastrarAluno(contadoraMatricula)
-            elif opcao == 2:
+            elif opcao == 3:
                 consultarAluno()
 
         except ValueError:

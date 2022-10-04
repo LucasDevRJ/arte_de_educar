@@ -1,8 +1,8 @@
+
 def cadastrarAluno():
     print('-' * 30, '|CADASTRAR ALUNO|', '-' * 30)
 
     alunos = []
-    aluno = []
 
     quantidadeAlunos = int(input('Digite a quantidade de alunos que deseja cadastrar: '))
 
@@ -10,14 +10,10 @@ def cadastrarAluno():
         nome = str(input('Digite o nome: '))
         sobrenome = str(input('Digite o sobrenome: '))
         dataNascimento = str(input('Digite a data de nascimento: '))
-        tipoEnsino = int(input('Opção 1 - Ensino Fundamental\n2 - Ensino Médio\nDigite: '))
+        tipoEnsino = int(input('\nOpção 1 - Ensino Fundamental\n2 - Ensino Médio\nDigite: '))
         genero = str(input('Digite o gênero: '))
 
-        aluno.append(nome)
-        aluno.append(sobrenome)
-        aluno.append(dataNascimento)
-        aluno.append(tipoEnsino)
-        aluno.append(genero)
+        alunos.append([nome, sobrenome, dataNascimento, tipoEnsino, genero])
 
 def exibeMenu():
     while True:
@@ -41,5 +37,6 @@ def exibeMenu():
             print('Dígito incorreto!\nDigite somente as opções presentes.')
             print()
             continue
+
 
 exibeMenu()

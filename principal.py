@@ -58,7 +58,9 @@ def cadastrarAluno(matricula):
         'Sobrenome': sobrenome,
         'Data de Nascimento': dataNascimento,
         'Ensino': tipoEnsino,
-        'Gênero': genero
+        'Gênero': genero,
+        'Nota do Teste': None,
+        'Nota da Prova': None
     }
 
     alunos.append(aluno.copy())
@@ -89,26 +91,33 @@ def consultarAluno():
 def cadastrarNota():
     while True:
         print('-' * 30, '|CADASTRAR NOTA|', '-' * 30)
-        print('Opção 1 - Cadastrar nota do teste.')
-        print('Opção 2 - Cadastrar nota da prova.')
-
         try:
-            opcao = int(input('Digite a opção desejada: '))
+            matriculaDigitada = int(input('Digite a matrícula do aluno que deseja cadastrar a nota: '))
 
-            if opcao == 1 or opcao == 2:
-                print('Opção 1 - Português.')
-                print('Opção 2 - História.')
-                print('Opção 3 - Geografia.')
-                print('Opção 4 - Ciências.')
-                print('Opção 5 - Matemática.')
+            for aluno in alunos:
+                if aluno['Matrícula'] == matriculaDigitada:
+                    if aluno['Ensino'] == 'Ensino Fundamental':
+                        print('Opção 1 - Cadastrar nota do teste.')
+                        print('Opção 2 - Cadastrar nota da prova.')
+
+                        opcao = int(input('Digite a opção desejada: '))
+
+                        if opcao == 1:
+                            print('Opção 1 - Português.')
+                            print('Opção 2 - História.')
+                            print('Opção 3 - Geografia.')
+                            print('Opção 4 - Ciências.')
+                            print('Opção 5 - Matemática.')
+
+                            notaTirada = float(input('Digite a nota tirada no teste pelo aluno: '))
+
+                            while 0.0 > notaTirada > 10.0:
+                                print('Nota inválida!')
+                                notaTirada = float(input('Digite a nota tirada no teste pelo aluno: '))
 
         except ValueError:
             print('Dígito incorreto!\nDigite somente números.')
             continue
-
-    for aluno in alunos:
-        if aluno['Matrícula'] == matriculaDigitada:
-            notaTirada = float(input('Digite a nota que o aluno tirou: '))
 
 def exibeMenu():
     while True:

@@ -1,4 +1,3 @@
-
 def cadastrarAluno():
     print('-' * 30, '|CADASTRAR ALUNO|', '-' * 30)
 
@@ -17,11 +16,40 @@ def cadastrarAluno():
 
         while not sobrenome.isalpha():
             print('Dígito incorreto!\nDigite somente letras e acentos.')
-            nome = str(input('Digite o nome: '))
+            sobrenome = str(input('Digite o sobrenome: '))
 
         dataNascimento = str(input('Digite a data de nascimento: '))
-        tipoEnsino = int(input('\nOpção 1 - Ensino Fundamental\nOpção 2 - Ensino Médio\nDigite: '))
+
+        while not dataNascimento.isdigit():
+            print('Dígito incorreto!\nDigite números e caracteres matemáticos.')
+            dataNascimento = str(input('Digite a data de nascimento: '))
+
+        while True:
+            try:
+                tipoEnsino = int(input('Escolha a classficação de ensino\n'
+                                       'Opção 1 - Ensino Fundamental\nOpção 2 - Ensino Médio\nDigite: '))
+                if tipoEnsino == 1 or tipoEnsino == 2:
+                    break
+            except ValueError:
+                print('Dígito incorreto!\nDigite somente as opções válidas.')
+                continue
+
         genero = str(input('Digite o gênero: '))
+
+        while not genero == 'M' and genero == 'm' and genero == 'F' \
+                or genero == 'f' and genero == 'O' and genero == 'o':
+            print('Gênero inválido!\nDigite somente M, F ou O.')
+            genero = str(input('Digite o gênero: '))
+
+        if tipoEnsino == 2:
+            tipoEnsino = 'Ensino Médio'
+        else:
+            tipoEnsino = 'Ensino Fundamental'
+
+        nome = nome.upper()
+        sobrenome = sobrenome.upper()
+        genero = genero.upper()
+        tipoEnsino = tipoEnsino.upper()
 
         alunos.append([nome, sobrenome, dataNascimento, tipoEnsino, genero])
         print(alunos)

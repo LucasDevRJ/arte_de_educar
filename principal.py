@@ -67,11 +67,11 @@ def cadastrarAluno(matricula):
 
 
 def consultarAluno():
-    print('-' * 30, '|CONSULTAR ALUNO|', '-' * 30)
-    print('Opção 1 - Consultar todos os alunos.')
-    print('Opção 2 - Consultar um aluno.')
-
     while True:
+        print('-' * 30, '|CONSULTAR ALUNO|', '-' * 30)
+        print('Opção 1 - Consultar todos os alunos.')
+        print('Opção 2 - Consultar um aluno.')
+
         try:
             opcao = int(input('Digite sua opção desejada: '))
             print()
@@ -84,6 +84,10 @@ def consultarAluno():
         except ValueError:
             print('Dígito incorreto!\nDigite somente números.')
             continue
+
+
+def cadastrarNota():
+    
 
 
 def exibeMenu():
@@ -103,6 +107,8 @@ def exibeMenu():
 
             if opcao == 1:
                 cadastrarAluno(contadoraMatricula)
+            elif opcao == 2:
+                cadastrarNota()
             elif opcao == 3:
                 consultarAluno()
 

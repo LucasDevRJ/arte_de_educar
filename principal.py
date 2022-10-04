@@ -8,12 +8,23 @@ def cadastrarAluno():
 
     for i in range(0, quantidadeAlunos, 1):
         nome = str(input('Digite o nome: '))
+
+        while not nome.isalpha():
+            print('Dígito incorreto!\nDigite somente letras e acentos.')
+            nome = str(input('Digite o nome: '))
+
         sobrenome = str(input('Digite o sobrenome: '))
+
+        while not sobrenome.isalpha():
+            print('Dígito incorreto!\nDigite somente letras e acentos.')
+            nome = str(input('Digite o nome: '))
+
         dataNascimento = str(input('Digite a data de nascimento: '))
-        tipoEnsino = int(input('\nOpção 1 - Ensino Fundamental\n2 - Ensino Médio\nDigite: '))
+        tipoEnsino = int(input('\nOpção 1 - Ensino Fundamental\nOpção 2 - Ensino Médio\nDigite: '))
         genero = str(input('Digite o gênero: '))
 
         alunos.append([nome, sobrenome, dataNascimento, tipoEnsino, genero])
+        print(alunos)
 
 def exibeMenu():
     while True:

@@ -141,8 +141,44 @@ def cadastrarNota():
                             print('Situação: Aprovado')
                         else:
                             print('Situação: Reprovado')
-                else:
-                    print('Matrícula inválida!')
+
+                elif aluno['Ensino'] == 'ENSINO MÉDIO':
+                    print('Opção 1 - Física.')
+                    print('Opção 2 - Química.')
+                    print('Opção 3 - Filosofia.')
+
+                    opcao = int(input('Digite a opção desejada: '))
+
+                    if opcao == 1:
+                        materia = 'Física'
+                    elif opcao == 2:
+                        materia = 'Química'
+                    elif opcao == 3:
+                        materia = 'Filosofia'
+
+                    notaTeste = float(input('Digite a nota do teste: '))
+                    notaProva = float(input('Digite a nota da prova: '))
+                    media = (notaTeste + notaProva) / 2
+                    print()
+
+                    if media >= 6.0:
+                        aprovado = True
+                    else:
+                        aprovado = False
+
+                    for key, value in aluno.items():
+                        print('{}:{}'.format(key, value))
+
+                    print()
+                    print('Matéria: {}'.format(materia))
+                    print('Nota do Teste: %.1f' % notaTeste)
+                    print('Nota da Prova: %.1f' % notaProva)
+                    print('Média: %.1f' % media)
+                    if aprovado:
+                        print('Situação: Aprovado')
+                    else:
+                        print('Situação: Reprovado')
+
         except ValueError:
             print('Dígito inválido!\nDigite somente números.')
 

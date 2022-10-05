@@ -213,6 +213,20 @@ def cadastrarProfessor(matricula):
         tipoEnsinoProfessor = int(input('Opção 1 - Ensino Fundamental\nOpção 2 - Ensino Médio\nDigite sua opção '
                                         'desejada: '))
 
+        if tipoEnsinoProfessor == 1:
+            print('Opção 1 - Português.')
+            print('Opção 2 - Ciências.')
+            print('Opção 3 - História.')
+
+            materia = int(input('Digite a matéria desejada: '))
+
+            if materia == 1:
+                materia = 'Português'
+            elif materia == 2:
+                materia = 'Ciências'
+            elif materia == 3:
+                materia = 'História'
+
     except ValueError:
         print('Dígite somente número.')
 

@@ -66,33 +66,36 @@ def cadastrarAluno(matricula):
 
 
 def consultarAluno():
-    while True:
-        print('-' * 30, '|CONSULTAR ALUNO|', '-' * 30)
-        print('Opção 1 - Consultar todos os alunos.')
-        print('Opção 2 - Consultar um aluno.')
-        print('Opção 3 - Voltar.')
+    if len(alunos) > 0:
+        while True:
+            print('-' * 30, '|CONSULTAR ALUNO|', '-' * 30)
+            print('Opção 1 - Consultar todos os alunos.')
+            print('Opção 2 - Consultar um aluno.')
+            print('Opção 3 - Voltar.')
 
-        try:
-            opcao = int(input('Digite sua opção desejada: '))
-            if opcao == 1:
-                for aluno in alunos:
-                    for key, value in aluno.items():
-                        print('{}:{}'.format(key, value))
-            elif opcao == 2:
-                matricula = int(input('Digite a matrícula do aluno: '))
-                for aluno in alunos:
-                    if aluno['Matrícula'] == matricula:
+            try:
+                opcao = int(input('Digite sua opção desejada: '))
+                if opcao == 1:
+                    for aluno in alunos:
                         for key, value in aluno.items():
                             print('{}:{}'.format(key, value))
-                    else:
-                        print('Matrícula inválida!')
-            elif opcao == 3:
-                exibeMenu()
-            else:
-                print('Dígito inválido!\nDigite alguma das opções.')
+                elif opcao == 2:
+                    matricula = int(input('Digite a matrícula do aluno: '))
+                    for aluno in alunos:
+                        if aluno['Matrícula'] == matricula:
+                            for key, value in aluno.items():
+                                print('{}:{}'.format(key, value))
+                        else:
+                            print('Matrícula inválida!')
+                elif opcao == 3:
+                    exibeMenu()
+                else:
+                    print('Dígito inválido!\nDigite alguma das opções.')
 
-        except ValueError:
-            print('Dígito inválido!\nDigite somente números.')
+            except ValueError:
+                print('Dígito inválido!\nDigite somente números.')
+    else:
+        print('Primeiro cadastre alunos para poder consulta-los.')
 
 
 def cadastrarNota():

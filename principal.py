@@ -70,6 +70,7 @@ def consultarAluno():
         print('-' * 30, '|CONSULTAR ALUNO|', '-' * 30)
         print('Opção 1 - Consultar todos os alunos.')
         print('Opção 2 - Consultar um aluno.')
+        print('Opção 3 - Voltar.')
 
         try:
             opcao = int(input('Digite sua opção desejada: '))
@@ -86,6 +87,8 @@ def consultarAluno():
                             print('{}:{}'.format(key, value))
                     else:
                         print('Matrícula inválida!')
+            elif opcao == 3:
+                exibeMenu()
             else:
                 print('Dígito inválido!\nDigite alguma das opções.')
 

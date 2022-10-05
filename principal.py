@@ -99,28 +99,66 @@ def consultarAluno():
 
 
 def cadastrarNota():
-    global materia
-    while True:
-        print('-' * 30, '|CADASTRAR NOTA|', '-' * 30)
-        try:
-            matricula = int(input('Digite a matrícula do aluno: '))
-            for aluno in alunos:
-                if aluno['Matrícula'] == matricula:
-                    print('Matrícula encontrada com sucesso!')
+    if len(alunos) > 0:
+        global materia
+        while True:
+            print('-' * 30, '|CADASTRAR NOTA|', '-' * 30)
+            try:
+                matricula = int(input('Digite a matrícula do aluno: '))
+                for aluno in alunos:
+                    if aluno['Matrícula'] == matricula:
+                        print('Matrícula encontrada com sucesso!')
 
-                    if aluno['Ensino'] == 'ENSINO FUNDAMENTAL':
-                        print('Opção 1 - Português.')
-                        print('Opção 2 - Ciências.')
-                        print('Opção 3 - História.')
+                        if aluno['Ensino'] == 'ENSINO FUNDAMENTAL':
+                            print('Opção 1 - Português.')
+                            print('Opção 2 - Ciências.')
+                            print('Opção 3 - História.')
+
+                            opcao = int(input('Digite a opção desejada: '))
+
+                            if opcao == 1:
+                                materia = 'Português'
+                            elif opcao == 2:
+                                materia = 'Ciências'
+                            elif opcao == 3:
+                                materia = 'História'
+
+                            notaTeste = float(input('Digite a nota do teste: '))
+                            notaProva = float(input('Digite a nota da prova: '))
+                            media = (notaTeste + notaProva) / 2
+                            print()
+
+                            if media >= 6.0:
+                                aprovado = True
+                            else:
+                                aprovado = False
+
+                            for key, value in aluno.items():
+                                print('{}:{}'.format(key, value))
+
+                            print()
+                            print('Matéria: {}'.format(materia))
+                            print('Nota do Teste: %.1f' % notaTeste)
+                            print('Nota da Prova: %.1f' % notaProva)
+                            print('Média: %.1f' % media)
+                            if aprovado:
+                                print('Situação: Aprovado')
+                            else:
+                                print('Situação: Reprovado')
+
+                    elif aluno['Ensino'] == 'ENSINO MÉDIO':
+                        print('Opção 1 - Física.')
+                        print('Opção 2 - Química.')
+                        print('Opção 3 - Filosofia.')
 
                         opcao = int(input('Digite a opção desejada: '))
 
                         if opcao == 1:
-                            materia = 'Português'
+                            materia = 'Física'
                         elif opcao == 2:
-                            materia = 'Ciências'
+                            materia = 'Química'
                         elif opcao == 3:
-                            materia = 'História'
+                            materia = 'Filosofia'
 
                         notaTeste = float(input('Digite a nota do teste: '))
                         notaProva = float(input('Digite a nota da prova: '))
@@ -145,45 +183,10 @@ def cadastrarNota():
                         else:
                             print('Situação: Reprovado')
 
-                elif aluno['Ensino'] == 'ENSINO MÉDIO':
-                    print('Opção 1 - Física.')
-                    print('Opção 2 - Química.')
-                    print('Opção 3 - Filosofia.')
-
-                    opcao = int(input('Digite a opção desejada: '))
-
-                    if opcao == 1:
-                        materia = 'Física'
-                    elif opcao == 2:
-                        materia = 'Química'
-                    elif opcao == 3:
-                        materia = 'Filosofia'
-
-                    notaTeste = float(input('Digite a nota do teste: '))
-                    notaProva = float(input('Digite a nota da prova: '))
-                    media = (notaTeste + notaProva) / 2
-                    print()
-
-                    if media >= 6.0:
-                        aprovado = True
-                    else:
-                        aprovado = False
-
-                    for key, value in aluno.items():
-                        print('{}:{}'.format(key, value))
-
-                    print()
-                    print('Matéria: {}'.format(materia))
-                    print('Nota do Teste: %.1f' % notaTeste)
-                    print('Nota da Prova: %.1f' % notaProva)
-                    print('Média: %.1f' % media)
-                    if aprovado:
-                        print('Situação: Aprovado')
-                    else:
-                        print('Situação: Reprovado')
-
-        except ValueError:
-            print('Dígito inválido!\nDigite somente números.')
+            except ValueError:
+                print('Dígito inválido!\nDigite somente números.')
+    else:
+        print('Primeiro cadastre alunos para poder cadastrar notas.')
 
 
 def exibeMenu():

@@ -1,11 +1,10 @@
 contadoraMatricula = 100
 alunos = []
+contadoraMatricula += 1
 
 
 def cadastrarAluno(matricula):
     print('-' * 30, '|CADASTRAR ALUNO|', '-' * 30)
-
-    matricula += 1
 
     nome = str(input('Digite o nome: '))
 
@@ -75,15 +74,24 @@ def consultarAluno():
         try:
             opcao = int(input('Digite sua opção desejada: '))
             print()
-
             if opcao == 1:
                 for aluno in alunos:
                     for key, value in aluno.items():
                         print('{}:{}'.format(key, value))
+            elif opcao == 2:
+                matricula = int(input('Digite a matrícula do aluno: '))
+                for aluno in alunos:
+                    if aluno['Matrícula'] == matricula:
+                        for key, value in aluno.items():
+                            print('{}:{}'.format(key, value))
+                    else:
+                        print('Matrícula inválida!')
+            else:
+                print('Dígito inválido!\nDigite alguma das opções.')
 
         except ValueError:
-            print('Dígito incorreto!\nDigite somente números.')
-            continue
+            print('Dígito inválido!\nDigite somente as opções.')
+
 
 
 def cadastrarNota():
@@ -104,17 +112,25 @@ def cadastrarNota():
 
             if opcao == 1:
                 materia = input('Digite a matéria desejada: ')
+                print('Matéria adicionada com sucesso!')
 
-            if len(materia) > 0:
-                if opcao == 1:
-                    notaTeste = float(input('Digite a nota do teste: '))
-                    print('Nota do teste adicionada com sucesso!')
-                elif opcao == 2:
-                    notaProva = float(input('Digite a nota da prova: '))
-                    print('Nota da prova adicionada com sucesso!')
-                elif opcao == 3:
-                    media = (notaTeste + notaProva) / 2
-                    print('A média final da matéria %s é %.2f', materia % media)
+                print('Opção 1 - Cadastrar matéria.')
+                print('Opção 2 - Cadastrar nota do teste.')
+                print('Opção 3 - Cadastrar nota da prova.')
+                print('Opção 4 - Ver média final.')
+
+                opcao = int(input('Digite sua opção desejada: '))
+
+                if len(materia) > 0:
+                    if opcao == 2:
+                        notaTeste = float(input('Digite a nota do teste: '))
+                        print('Nota do teste adicionada com sucesso!')
+                    elif opcao == 3:
+                        notaProva = float(input('Digite a nota da prova: '))
+                        print('Nota da prova adicionada com sucesso!')
+                    elif opcao == 4:
+                        media = (notaTeste + notaProva) / 2
+                        print('A média final da matéria %s é %.2f', materia % media)
             else:
                 print('Adicione primeiro a matéria!')
                 cadastrarNota()

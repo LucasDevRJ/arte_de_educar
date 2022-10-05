@@ -1,6 +1,9 @@
 contadoraMatricula = 100
+contadoraMatriculaProfessor = 800
 alunos = []
+professores = []
 contadoraMatricula += 1
+contadoraMatriculaProfessor += 1
 
 
 def cadastrarAluno(matricula):
@@ -61,6 +64,9 @@ def cadastrarAluno(matricula):
     }
 
     alunos.append(aluno.copy())
+
+    print('Aluno cadastrado com sucesso!')
+    print('Matrícula do aluno: {}'.format(matricula))
 
     print('-' * 79)
 
@@ -189,9 +195,51 @@ def cadastrarNota():
         print('Primeiro cadastre alunos para poder cadastrar notas.')
 
 
-def cadastrarProfessor():
-    
+def cadastrarProfessor(matricula):
+    print('-' * 30, '|CADASTRAR PROFESSOR|', '-' * 30)
+    nome = str(input('Digite o nome: '))
 
+    while not nome.isalpha():
+        print('Dígito incorreto!\nDigite somente letras e acentos.')
+        nome = str(input('Digite o nome: '))
+
+    sobrenome = str(input('Digite o sobrenome: '))
+
+    while not sobrenome.isalpha():
+        print('Dígito incorreto!\nDigite somente letras e acentos.')
+        sobrenome = str(input('Digite o sobrenome: '))
+
+    materia = str(input('Digite a matéria que o professor ministra: '))
+
+    while not materia.isalnum():
+        print('Dígito incorreto!\nDigite somente letras, números e acentos.')
+        materia = str(input('Digite a matéria que o professor ministra: '))
+
+    genero = str(input('Digite o gênero: '))
+
+    while not genero == 'M' and genero == 'm' and genero == 'F' \
+            or genero == 'f' and genero == 'O' and genero == 'o':
+        print('Gênero inválido!\nDigite somente M, F ou O.')
+        genero = str(input('Digite o gênero: '))
+
+    nome = nome.upper()
+    sobrenome = sobrenome.upper()
+    genero = genero.upper()
+    tipoEnsino = tipoEnsino.upper()
+
+    professor = {
+        'Matrícula': matricula,
+        'Nome': nome,
+        'Sobrenome': sobrenome,
+        'Gênero': genero
+    }
+
+    professores.append(professor.copy())
+
+    print('Aluno cadastrado com sucesso!')
+    print('Matrícula do aluno: {}'.format(matricula))
+
+    print('-' * 79)
 
 def exibeMenu():
     while True:
@@ -214,7 +262,7 @@ def exibeMenu():
             elif opcao == 3:
                 consultarAluno()
             elif opcao == 4:
-                cadastrarProfessor()
+                cadastrarProfessor(contadoraMatriculaProfessor)
 
         except ValueError:
             print('Dígito incorreto!\nDigite somente as opções presentes.')

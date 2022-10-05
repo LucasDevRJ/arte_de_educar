@@ -209,6 +209,13 @@ def cadastrarProfessor(matricula):
         print('Dígito incorreto!\nDigite somente letras e acentos.')
         sobrenomeProfessor = str(input('Digite o sobrenome: '))
 
+    try:
+        tipoEnsinoProfessor = int(input('Opção 1 - Ensino Fundamental\nOpção 2 - Ensino Médio\nDigite sua opção '
+                                        'desejada: '))
+
+    except ValueError:
+        print('Dígite somente número.')
+
 def exibeMenu():
     while True:
         print('-' * 30, '|MENU PRINCIPAL|', '-' * 30)

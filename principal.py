@@ -107,6 +107,18 @@ def cadastrarNota():
                         print('Opção 1 - Português.')
                         print('Opção 2 - Ciências.')
                         print('Opção 3 - História.')
+
+                        opcao = int(input('Digite a opção desejada: '))
+
+                        if opcao == 1:
+                            materia = 'Português'
+                        elif opcao == 2:
+                            materia = 'Ciências'
+                        elif opcao == 3:
+                            materia = 'História'
+
+                        notaTeste = float(input('Digite a nota do teste: '))
+                        notaProva = float(input('Digite a nota da prova: '))
                 else:
                     print('Matrícula inválida!')
         except ValueError:

@@ -98,9 +98,17 @@ def consultarAluno():
 
 def cadastrarNota():
     while True:
-        print('-' * 30, '|CADASTRAR ALUNO|', '-' * 30)
+        print('-' * 30, '|CADASTRAR NOTA|', '-' * 30)
         try:
             matricula = int(input('Digite a matrícula do aluno: '))
+            for aluno in alunos:
+                if aluno['Matrícula'] == matricula:
+                    if aluno['Ensino'] == 'Ensino Fundamental':
+                        print('Opção 1 - Português.')
+                        print('Opção 2 - Ciências.')
+                        print('Opção 3 - História.')
+                else:
+                    print('Matrícula inválida!')
         except ValueError:
             print('Dígito inválido!\nDigite somente números.')
 

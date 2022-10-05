@@ -98,6 +98,7 @@ def cadastrarNota():
             print('Opção 1 - Cadastrar matéria.')
             print('Opção 2 - Cadastrar nota do teste.')
             print('Opção 3 - Cadastrar nota da prova.')
+            print('Opção 4 - Ver média final.')
 
             opcao = int(input('Digite sua opção desejada: '))
 
@@ -111,15 +112,12 @@ def cadastrarNota():
                 elif opcao == 2:
                     notaProva = float(input('Digite a nota da prova: '))
                     print('Nota da prova adicionada com sucesso!')
-                else:
-                    print('Opção inválida!')
-                    cadastrarNota()
+                elif opcao == 3:
+                    media = (notaTeste + notaProva) / 2
+                    print('A média final da matéria %s é %.2f', materia % media)
             else:
                 print('Adicione primeiro a matéria!')
                 cadastrarNota()
-
-
-def consultarNotas():
 
 
 def exibeMenu():
@@ -130,7 +128,6 @@ def exibeMenu():
         print('Opção 2 - Cadastrar nota.')
         print('Opção 3 - Consultar aluno.')
         print('Opção 4 - Cadastrar professor.')
-        print('Opção 5 - Consultar notas.')
         print('Opção 6 - Sair.')
         print('-' * 79)
         try:
@@ -143,8 +140,6 @@ def exibeMenu():
                 cadastrarNota()
             elif opcao == 3:
                 consultarAluno()
-            elif opcao == 5:
-                consultarNotas()
 
         except ValueError:
             print('Dígito incorreto!\nDigite somente as opções presentes.')

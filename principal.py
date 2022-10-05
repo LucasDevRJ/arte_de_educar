@@ -189,6 +189,10 @@ def cadastrarNota():
         print('Primeiro cadastre alunos para poder cadastrar notas.')
 
 
+def cadastrarProfessor():
+    
+
+
 def exibeMenu():
     while True:
         print('-' * 30, '|MENU PRINCIPAL|', '-' * 30)
@@ -197,7 +201,7 @@ def exibeMenu():
         print('Opção 2 - Cadastrar nota.')
         print('Opção 3 - Consultar aluno.')
         print('Opção 4 - Cadastrar professor.')
-        print('Opção 6 - Sair.')
+        print('Opção 5 - Sair.')
         print('-' * 79)
         try:
             opcao = int(input('Digite sua opção desejada: '))
@@ -209,6 +213,8 @@ def exibeMenu():
                 cadastrarNota()
             elif opcao == 3:
                 consultarAluno()
+            elif opcao == 4:
+                cadastrarProfessor()
 
         except ValueError:
             print('Dígito incorreto!\nDigite somente as opções presentes.')

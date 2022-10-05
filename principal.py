@@ -87,18 +87,37 @@ def consultarAluno():
 
 
 def cadastrarNota():
+    global notaTeste, notaProva, materia
+    materia = ''
+
     print('-' * 30, '|CADASTRAR NOTA|', '-' * 30)
     matricula = int(input('Digite a matrícula do aluno: '))
 
     for aluno in alunos:
         if aluno['Matrícula'] == matricula:
-            print('Opção 1 - Cadastrar nota do teste.')
-            print('Opção 2 - Cadastrar nota da prova.')
+            print('Opção 1 - Cadastrar matéria.')
+            print('Opção 2 - Cadastrar nota do teste.')
+            print('Opção 3 - Cadastrar nota da prova.')
+            print('Opção 4 - Consultar média.')
 
             opcao = int(input('Digite sua opção desejada: '))
 
             if opcao == 1:
-                notaTeste = float(input('Digite a nota do teste: '))
+                materia = input('Digite a matéria desejada: ')
+
+            if len(materia) > 0:
+                if opcao == 1:
+                    notaTeste = float(input('Digite a nota do teste: '))
+                    print('Nota do teste adicionada com sucesso!')
+                elif opcao == 2:
+                    notaProva = float(input('Digite a nota da prova: '))
+                    print('Nota da prova adicionada com sucesso!')
+                elif opcao == 3:
+                    media = (notaTeste + notaProva) / 2
+                    print('Média Final: %.2f' % media)
+            else:
+                print('Adicione primeiro a matéria!')
+                cadastrarNota()
 
 
 def exibeMenu():

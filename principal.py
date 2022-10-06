@@ -197,6 +197,9 @@ def cadastrarNota():
 
 def cadastrarProfessor(matricula):
     global materia, tipoEnsinoProfessor
+    tipoEnsinoProfessor = ''
+    materia = ''
+
     print('-' * 30, '|CADASTRAR PROFESSOR|', '-' * 30)
     nomeProfessor = str(input('Digite o nome do professor: '))
 
@@ -204,48 +207,52 @@ def cadastrarProfessor(matricula):
         print('Dígito incorreto!\nDigite somente letras e acentos.')
         nomeProfessor = str(input('Digite o nome: '))
 
-    sobrenomeProfessor = str(input('Digite o nome do professor: '))
+    sobrenomeProfessor = str(input('Digite o sobrenome do professor: '))
 
     while not sobrenomeProfessor.isalpha():
         print('Dígito incorreto!\nDigite somente letras e acentos.')
         sobrenomeProfessor = str(input('Digite o sobrenome: '))
 
-    try:
-        tipoEnsinoProfessor = int(input('Opção 1 - Ensino Fundamental\nOpção 2 - Ensino Médio\nDigite sua opção '
-                                        'desejada: '))
+    while True:
+        try:
+            tipoEnsinoProfessor = int(input('Opção 1 - Ensino Fundamental\nOpção 2 - Ensino Médio\nDigite sua opção '
+                                            'desejada: '))
 
-        if tipoEnsinoProfessor == 1:
-            tipoEnsinoProfessor = 'ensino fundamental'
-            print('Opção 1 - Português.')
-            print('Opção 2 - Ciências.')
-            print('Opção 3 - História.')
+            if tipoEnsinoProfessor == 1:
+                tipoEnsinoProfessor = 'ensino fundamental'
+                print('Opção 1 - Português.')
+                print('Opção 2 - Ciências.')
+                print('Opção 3 - História.')
 
-            materia = int(input('Digite a matéria desejada: '))
+                materia = int(input('Digite a matéria desejada: '))
 
-            if materia == 1:
-                materia = 'Português'
-            elif materia == 2:
-                materia = 'Ciências'
-            elif materia == 3:
-                materia = 'História'
+                if materia == 1:
+                    materia = 'Português'
+                elif materia == 2:
+                    materia = 'Ciências'
+                elif materia == 3:
+                    materia = 'História'
 
-        elif tipoEnsinoProfessor == 2:
-            tipoEnsinoProfessor = 'ensino médio'
-            print('Opção 1 - Física.')
-            print('Opção 2 - Química.')
-            print('Opção 3 - Filosofia.')
+                break
+            elif tipoEnsinoProfessor == 2:
+                tipoEnsinoProfessor = 'ensino médio'
+                print('Opção 1 - Física.')
+                print('Opção 2 - Química.')
+                print('Opção 3 - Filosofia.')
 
-            materia = int(input('Digite a matéria desejada: '))
+                materia = int(input('Digite a matéria desejada: '))
 
-            if materia == 1:
-                materia = 'Física'
-            elif materia == 2:
-                materia = 'Química'
-            elif materia == 3:
-                materia = 'Filosofia'
+                if materia == 1:
+                    materia = 'Física'
+                elif materia == 2:
+                    materia = 'Química'
+                elif materia == 3:
+                    materia = 'Filosofia'
 
-    except ValueError:
-        print('Dígite somente número.')
+                break
+        except ValueError:
+            print('Dígite somente número.')
+            continue
 
     nomeProfessor = nomeProfessor.upper()
     sobrenomeProfessor = sobrenomeProfessor.upper()

@@ -196,6 +196,7 @@ def cadastrarNota():
 
 
 def cadastrarProfessor(matricula):
+    global materia, tipoEnsinoProfessor
     print('-' * 30, '|CADASTRAR PROFESSOR|', '-' * 30)
     nomeProfessor = str(input('Digite o nome do professor: '))
 
@@ -214,6 +215,7 @@ def cadastrarProfessor(matricula):
                                         'desejada: '))
 
         if tipoEnsinoProfessor == 1:
+            tipoEnsinoProfessor = 'ensino fundamental'
             print('Opção 1 - Português.')
             print('Opção 2 - Ciências.')
             print('Opção 3 - História.')
@@ -227,8 +229,40 @@ def cadastrarProfessor(matricula):
             elif materia == 3:
                 materia = 'História'
 
+        elif tipoEnsinoProfessor == 2:
+            tipoEnsinoProfessor = 'ensino médio'
+            print('Opção 1 - Física.')
+            print('Opção 2 - Química.')
+            print('Opção 3 - Filosofia.')
+
+            materia = int(input('Digite a matéria desejada: '))
+
+            if materia == 1:
+                materia = 'Física'
+            elif materia == 2:
+                materia = 'Química'
+            elif materia == 3:
+                materia = 'Filosofia'
+
     except ValueError:
         print('Dígite somente número.')
+
+    nomeProfessor = nomeProfessor.upper()
+    sobrenomeProfessor = sobrenomeProfessor.upper()
+    tipoEnsinoProfessor = tipoEnsinoProfessor.upper()
+
+    professor = {
+        'Nome': nomeProfessor,
+        'Sobrenome': sobrenomeProfessor,
+        'Ensino': tipoEnsinoProfessor,
+        'Matéria': materia
+    }
+
+    professores.append(professor.copy())
+
+    print('Professor cadastrado com sucesso!')
+    print('A matrícula do professor: {}'.format(matricula))
+
 
 def exibeMenu():
     while True:

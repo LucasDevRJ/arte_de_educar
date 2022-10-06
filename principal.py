@@ -284,13 +284,13 @@ def consultarProfessor():
                 opcao = int(input('Digite sua opção desejada: '))
                 if opcao == 1:
                     for professor in professores:
-                        for key, value in aluno.items():
+                        for key, value in professor.items():
                             print('{}:{}'.format(key, value))
                 elif opcao == 2:
                     matricula = int(input('Digite a matrícula do professor: '))
-                    for aluno in alunos:
-                        if aluno['Matrícula'] == matricula:
-                            for key, value in aluno.items():
+                    for professor in professores:
+                        if professor['Matrícula'] == matricula:
+                            for key, value in professor.items():
                                 print('{}:{}'.format(key, value))
                         else:
                             print('Matrícula inválida!')
@@ -305,6 +305,10 @@ def consultarProfessor():
         print('Primeiro cadastre professores para poder consulta-los.')
 
 
+def finalizarPrograma():
+    print('Programa finalizado.')
+
+
 def exibeMenu():
     while True:
         print('-' * 30, '|MENU PRINCIPAL|', '-' * 30)
@@ -314,6 +318,7 @@ def exibeMenu():
         print('Opção 3 - Consultar aluno.')
         print('Opção 4 - Cadastrar professor.')
         print('Opção 5 - Consultar professor.')
+        print('Opção 6 - Finalizar programa.')
         print('-' * 79)
         try:
             opcao = int(input('Digite sua opção desejada: '))
@@ -329,6 +334,11 @@ def exibeMenu():
                 cadastrarProfessor(contadoraMatriculaProfessor)
             elif opcao == 5:
                 consultarProfessor()
+            elif opcao == 6:
+                finalizarPrograma()
+            else:
+                print('Opção inválida.')
+                continue
 
         except ValueError:
             print('Dígito incorreto!\nDigite somente as opções presentes.')

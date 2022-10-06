@@ -1,9 +1,7 @@
-contadoraMatricula = 100
-contadoraMatriculaProfessor = 800
+matriculaAluno = 100
+matriculaProfessor = 800
 alunos = []
 professores = []
-contadoraMatricula += 1
-contadoraMatriculaProfessor += 1
 
 
 def cadastrarAluno(matricula):
@@ -85,6 +83,7 @@ def consultarAluno():
                     for aluno in alunos:
                         for key, value in aluno.items():
                             print('{}:{}'.format(key, value))
+                        print()
                 elif opcao == 2:
                     matricula = int(input('Digite a matrícula do aluno: '))
                     for aluno in alunos:
@@ -152,10 +151,12 @@ def cadastrarNota():
                             else:
                                 print('Situação: Reprovado')
 
-                    elif aluno['Ensino'] == 'ENSINO MÉDIO':
-                        print('Opção 1 - Física.')
-                        print('Opção 2 - Química.')
-                        print('Opção 3 - Filosofia.')
+                            break
+
+                        elif aluno['Ensino'] == 'ENSINO MÉDIO':
+                            print('Opção 1 - Física.')
+                            print('Opção 2 - Química.')
+                            print('Opção 3 - Filosofia.')
 
                         opcao = int(input('Digite a opção desejada: '))
 
@@ -188,6 +189,8 @@ def cadastrarNota():
                             print('Situação: Aprovado')
                         else:
                             print('Situação: Reprovado')
+
+                break
 
             except ValueError:
                 print('Dígito inválido!\nDigite somente números.')
@@ -257,6 +260,7 @@ def cadastrarProfessor(matricula):
     nomeProfessor = nomeProfessor.upper()
     sobrenomeProfessor = sobrenomeProfessor.upper()
     tipoEnsinoProfessor = tipoEnsinoProfessor.upper()
+    materia = materia.upper()
 
     professor = {
         'Matrícula': matricula,
@@ -286,6 +290,7 @@ def consultarProfessor():
                     for professor in professores:
                         for key, value in professor.items():
                             print('{}:{}'.format(key, value))
+                        print()
                 elif opcao == 2:
                     matricula = int(input('Digite a matrícula do professor: '))
                     for professor in professores:
@@ -310,6 +315,7 @@ def finalizarPrograma():
 
 
 def exibeMenu():
+    global matricula, matriculaAluno, matriculaProfessor
     while True:
         print('-' * 30, '|MENU PRINCIPAL|', '-' * 30)
         print('Bem-vindo(a) ao sistema escolar "Arte de Educar".')
@@ -325,17 +331,20 @@ def exibeMenu():
             print()
 
             if opcao == 1:
-                cadastrarAluno(contadoraMatricula)
+                matriculaAluno = matriculaAluno + 1
+                cadastrarAluno(matriculaAluno)
             elif opcao == 2:
                 cadastrarNota()
             elif opcao == 3:
                 consultarAluno()
             elif opcao == 4:
-                cadastrarProfessor(contadoraMatriculaProfessor)
+                matriculaProfessor = matriculaProfessor + 1
+                cadastrarProfessor(matriculaProfessor)
             elif opcao == 5:
                 consultarProfessor()
             elif opcao == 6:
                 finalizarPrograma()
+                break
             else:
                 print('Opção inválida.')
                 continue

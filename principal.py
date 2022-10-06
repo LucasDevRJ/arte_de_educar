@@ -259,6 +259,7 @@ def cadastrarProfessor(matricula):
     tipoEnsinoProfessor = tipoEnsinoProfessor.upper()
 
     professor = {
+        'Matrícula': matricula,
         'Nome': nomeProfessor,
         'Sobrenome': sobrenomeProfessor,
         'Ensino': tipoEnsinoProfessor,
@@ -271,6 +272,39 @@ def cadastrarProfessor(matricula):
     print('A matrícula do professor: {}'.format(matricula))
 
 
+def consultarProfessor():
+    if len(professores) > 0:
+        while True:
+            print('-' * 30, '|CONSULTAR PROFESSOR|', '-' * 30)
+            print('Opção 1 - Consultar todos os professores.')
+            print('Opção 2 - Consultar um professor.')
+            print('Opção 3 - Voltar.')
+
+            try:
+                opcao = int(input('Digite sua opção desejada: '))
+                if opcao == 1:
+                    for professor in professores:
+                        for key, value in aluno.items():
+                            print('{}:{}'.format(key, value))
+                elif opcao == 2:
+                    matricula = int(input('Digite a matrícula do professor: '))
+                    for aluno in alunos:
+                        if aluno['Matrícula'] == matricula:
+                            for key, value in aluno.items():
+                                print('{}:{}'.format(key, value))
+                        else:
+                            print('Matrícula inválida!')
+                elif opcao == 3:
+                    exibeMenu()
+                else:
+                    print('Dígito inválido!\nDigite alguma das opções.')
+
+            except ValueError:
+                print('Dígito inválido!\nDigite somente números.')
+    else:
+        print('Primeiro cadastre professores para poder consulta-los.')
+
+
 def exibeMenu():
     while True:
         print('-' * 30, '|MENU PRINCIPAL|', '-' * 30)
@@ -279,7 +313,7 @@ def exibeMenu():
         print('Opção 2 - Cadastrar nota.')
         print('Opção 3 - Consultar aluno.')
         print('Opção 4 - Cadastrar professor.')
-        print('Opção 5 - Sair.')
+        print('Opção 5 - Consultar professor.')
         print('-' * 79)
         try:
             opcao = int(input('Digite sua opção desejada: '))
@@ -293,6 +327,8 @@ def exibeMenu():
                 consultarAluno()
             elif opcao == 4:
                 cadastrarProfessor(contadoraMatriculaProfessor)
+            elif opcao == 5:
+                consultarProfessor()
 
         except ValueError:
             print('Dígito incorreto!\nDigite somente as opções presentes.')

@@ -315,10 +315,27 @@ def finalizarPrograma():
 
 
 def exibeMenuAluno():
-    print('-' * 30, '|MENU DO ALUNO|', '-' * 30)
-    print('Opção 1 - Cadastrar aluno.')
-    print('Opção 2 - Cadastrar nota.')
-    print('Opção 3 - Consultar aluno.')
+    global matriculaAluno
+    while True:
+        print('-' * 30, '|MENU DO ALUNO|', '-' * 30)
+        print('Opção 1 - Cadastrar aluno.')
+        print('Opção 2 - Cadastrar nota.')
+        print('Opção 3 - Consultar aluno.')
+
+        try:
+            opcao = int(input('Digite a opção desejada: '))
+            if opcao == 1:
+                matriculaAluno = matriculaAluno + 1
+                cadastrarAluno(matriculaAluno)
+            elif opcao == 2:
+                cadastrarNota()
+            elif opcao == 3:
+                consultarAluno()
+            else:
+                print('Opção inválida!!')
+                continue
+        except ValueError:
+            print('Dígito inválido!\nDigite somente as opções presentes.')
 
 
 
@@ -337,13 +354,11 @@ def exibeMenu():
             print()
 
             if opcao == 1:
-                matriculaAluno = matriculaAluno + 1
-                cadastrarAluno(matriculaAluno)
                 exibeMenuAluno()
             elif opcao == 2:
-                cadastrarNota()
+
             elif opcao == 3:
-                consultarAluno()
+
             elif opcao == 4:
                 matriculaProfessor = matriculaProfessor + 1
                 cadastrarProfessor(matriculaProfessor)

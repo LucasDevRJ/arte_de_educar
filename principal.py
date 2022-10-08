@@ -93,7 +93,7 @@ def consultarAluno():
                         else:
                             print('Matrícula inválida!')
                 elif opcao == 3:
-                    exibeMenu()
+                    exibeMenuAluno()
                 else:
                     print('Dígito inválido!\nDigite alguma das opções.')
 
@@ -300,7 +300,7 @@ def consultarProfessor():
                         else:
                             print('Matrícula inválida!')
                 elif opcao == 3:
-                    exibeMenu()
+                    exibeMenuAluno()
                 else:
                     print('Dígito inválido!\nDigite alguma das opções.')
 
@@ -461,6 +461,10 @@ def exibeMenuAluno():
                 excluirAluno()
             elif opcao == 4:
                 alterarAluno()
+            elif opcao == 5:
+                cadastrarNota()
+            elif opcao == 6:
+                exibeMenu()
             else:
                 print('Opção inválida!!')
                 continue
@@ -512,6 +516,7 @@ def exibeMenu():
                 exibeMenuProfessor()
             elif opcao == 3:
                 finalizarPrograma()
+                break
             else:
                 print('Opção inválida.')
                 continue

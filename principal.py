@@ -314,13 +314,49 @@ def finalizarPrograma():
     print('Programa finalizado.')
 
 
+def excluirAluno():
+    if len(alunos) > 0:
+        while True:
+            print('-' * 30, '|EXCLUIR ALUNO|', '-' * 30)
+            print('Opção 1 - Excluir todos os alunos.')
+            print('Opção 2 - Excluir um aluno.')
+            print('Opção 3 - Voltar.')
+
+            try:
+                opcao = int(input('Digite sua opção desejada: '))
+                if opcao == 1:
+                    for aluno in alunos:
+                        alunos.clear()
+                        print('Alunos excluídos com sucesso!')
+                elif opcao == 2:
+                    matricula = int(input('Digite a matrícula do professor: '))
+                    for aluno in alunos:
+                        if aluno['Matrícula'] == matricula:
+                            alunos.remove(matricula)
+                            print('Aluno excluído com sucesso!')
+                        else:
+                            print('Matrícula inválida!')
+                elif opcao == 3:
+                    exibeMenuAluno()
+                else:
+                    print('Dígito inválido!\nDigite alguma das opções.')
+
+            except ValueError:
+                print('Dígito inválido!\nDigite somente números.')
+    else:
+        print('Primeiro cadastre alunos para poder excluí-los.')
+
+
 def exibeMenuAluno():
     global matriculaAluno
     while True:
         print('-' * 30, '|MENU DO ALUNO|', '-' * 30)
         print('Opção 1 - Cadastrar aluno.')
-        print('Opção 2 - Cadastrar nota.')
-        print('Opção 3 - Consultar aluno.')
+        print('Opção 2 - Consultar aluno.')
+        print('Opção 3 - Excluir aluno.')
+        print('Opção 4 - Alterar aluno.')
+        print('Opção 5 - Cadastrar nota.')
+        print('Opção 6 - Voltar.')
 
         try:
             opcao = int(input('Digite a opção desejada: '))
@@ -328,9 +364,11 @@ def exibeMenuAluno():
                 matriculaAluno = matriculaAluno + 1
                 cadastrarAluno(matriculaAluno)
             elif opcao == 2:
-                cadastrarNota()
-            elif opcao == 3:
                 consultarAluno()
+            elif opcao == 3:
+                excluirAluno()
+            elif opcao == 4:
+                alterarAluno()
             else:
                 print('Opção inválida!!')
                 continue
@@ -339,9 +377,27 @@ def exibeMenuAluno():
 
 
 def exibeMenuProfessor():
-    print('-' * 30, '|MENU DO PROFESSOR|', '-' * 30)
-    print('Opção 4 - Cadastrar professor.')
-    print('Opção 5 - Consultar professor.')
+    global matriculaProfessor
+    while True:
+        print('-' * 30, '|MENU DO PROFESSOR|', '-' * 30)
+        print('Opção 1 - Cadastrar professor.')
+        print('Opção 2 - Consultar professor.')
+        print('Opção 3 - Voltar.')
+
+        try:
+            opcao = int(input('Digite a opção desejada: '))
+            if opcao == 1:
+                matriculaProfessor = matriculaProfessor + 1
+                cadastrarProfessor(matriculaProfessor)
+            elif opcao == 2:
+                consultarProfessor()
+            elif opcao == 3:
+                exibeMenu()
+            else:
+                print('Opção inválida!!')
+        except ValueError:
+            print('Dígito inválido!\nDigite somente as opções presentes.')
+
 
 
 def exibeMenu():
@@ -349,9 +405,10 @@ def exibeMenu():
     while True:
         print('-' * 30, '|MENU PRINCIPAL|', '-' * 30)
         print('Bem-vindo(a) ao sistema escolar "Arte de Educar".')
-        print('Opção 1 - Alunos.')
-        print('Opção 2 - Professores.')
-        
+        print('Opção 1 - Menu dos Alunos.')
+        print('Opção 2 - Menu dos Professores.')
+        print('Opção 3 - Finalizar Programa.')
+
         print('-' * 79)
         try:
             opcao = int(input('Digite sua opção desejada: '))
@@ -362,15 +419,7 @@ def exibeMenu():
             elif opcao == 2:
                 exibeMenuProfessor()
             elif opcao == 3:
-
-            elif opcao == 4:
-                matriculaProfessor = matriculaProfessor + 1
-                cadastrarProfessor(matriculaProfessor)
-            elif opcao == 5:
-                consultarProfessor()
-            elif opcao == 6:
                 finalizarPrograma()
-                break
             else:
                 print('Opção inválida.')
                 continue

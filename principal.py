@@ -314,14 +314,20 @@ def finalizarPrograma():
     print('Programa finalizado.')
 
 
+def exibeMenuAluno():
+    print('-' * 30, '|MENU DO ALUNO|', '-' * 30)
+    print('Opção 1 - Cadastrar aluno.')
+    print('Opção 2 - Cadastrar nota.')
+    print('Opção 3 - Consultar aluno.')
+
+
+
 def exibeMenu():
     global matricula, matriculaAluno, matriculaProfessor
     while True:
         print('-' * 30, '|MENU PRINCIPAL|', '-' * 30)
         print('Bem-vindo(a) ao sistema escolar "Arte de Educar".')
-        print('Opção 1 - Cadastrar aluno.')
-        print('Opção 2 - Cadastrar nota.')
-        print('Opção 3 - Consultar aluno.')
+        print('1 - Alunos.')
         print('Opção 4 - Cadastrar professor.')
         print('Opção 5 - Consultar professor.')
         print('Opção 6 - Finalizar programa.')
@@ -333,6 +339,7 @@ def exibeMenu():
             if opcao == 1:
                 matriculaAluno = matriculaAluno + 1
                 cadastrarAluno(matriculaAluno)
+                exibeMenuAluno()
             elif opcao == 2:
                 cadastrarNota()
             elif opcao == 3:

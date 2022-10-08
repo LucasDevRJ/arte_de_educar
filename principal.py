@@ -347,6 +347,98 @@ def excluirAluno():
         print('Primeiro cadastre alunos para poder excluí-los.')
 
 
+def atualizarAluno(matricula):
+    print('-' * 30, '|ATUALIZAR ALUNO|', '-' * 30)
+    nome = str(input('Digite o nome: '))
+
+    while not nome.isalpha():
+        print('Dígito incorreto!\nDigite somente letras e acentos.')
+        nome = str(input('Digite o nome: '))
+
+    sobrenome = str(input('Digite o sobrenome: '))
+
+    while not sobrenome.isalpha():
+        print('Dígito incorreto!\nDigite somente letras e acentos.')
+        sobrenome = str(input('Digite o sobrenome: '))
+
+    dataNascimento = str(input('Digite a data de nascimento: '))
+
+    while not dataNascimento.isdigit():
+        print('Dígito incorreto!\nDigite números e caracteres matemáticos.')
+        dataNascimento = str(input('Digite a data de nascimento: '))
+
+    while True:
+        try:
+            tipoEnsino = int(input('Escolha a classficação de ensino\n'
+                                   'Opção 1 - Ensino Fundamental\nOpção 2 - Ensino Médio\nDigite: '))
+            if tipoEnsino == 1 or tipoEnsino == 2:
+                break
+        except ValueError:
+            print('Dígito incorreto!\nDigite somente as opções válidas.')
+            continue
+
+    genero = str(input('Digite o gênero: '))
+
+    while not genero == 'M' and genero == 'm' and genero == 'F' \
+            or genero == 'f' and genero == 'O' and genero == 'o':
+        print('Gênero inválido!\nDigite somente M, F ou O.')
+        genero = str(input('Digite o gênero: '))
+
+    if tipoEnsino == 2:
+        tipoEnsino = 'Ensino Médio'
+    else:
+        tipoEnsino = 'Ensino Fundamental'
+
+    nome = nome.upper()
+    sobrenome = sobrenome.upper()
+    genero = genero.upper()
+    tipoEnsino = tipoEnsino.upper()
+
+    aluno = {
+        'Matrícula': matricula,
+        'Nome': nome,
+        'Sobrenome': sobrenome,
+        'Data de Nascimento': dataNascimento,
+        'Ensino': tipoEnsino,
+        'Gênero': genero
+    }
+
+    alunos.pop()
+    alunos.append(aluno.copy())
+
+    print('Informações atualizadas com sucesso!')
+    print('-' * 79)
+
+
+def alterarAluno():
+    if len(alunos) > 0:
+        while True:
+            print('-' * 30, '|EXCLUIR ALUNO|', '-' * 30)
+            print('Opção 1 - Alterar informações do aluno.')
+            print('Opção 2 - Voltar.')
+
+            try:
+                opcao = int(input('Digite sua opção desejada: '))
+                if opcao == 1:
+                    matricula = int(input('Digite a matrícula do aluno: '))
+                    for aluno in alunos:
+                        if aluno['Matrícula'] == matricula:
+                            atualizarAluno(matricula)
+                            print('Informações atualizadas com sucesso!')
+                            break
+                        else:
+                            print('Matrícula inválida!')
+                elif opcao == 2:
+                    exibeMenuAluno()
+                else:
+                    print('Dígito inválido!\nDigite alguma das opções.')
+
+            except ValueError:
+                print('Dígito inválido!\nDigite somente números.')
+    else:
+        print('Primeiro cadastre alunos para poder excluí-los.')
+
+
 def exibeMenuAluno():
     global matriculaAluno
     while True:

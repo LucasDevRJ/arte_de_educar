@@ -338,16 +338,20 @@ def exibeMenuAluno():
             print('Dígito inválido!\nDigite somente as opções presentes.')
 
 
+def exibeMenuProfessor():
+    print('-' * 30, '|MENU DO PROFESSOR|', '-' * 30)
+    print('Opção 4 - Cadastrar professor.')
+    print('Opção 5 - Consultar professor.')
+
 
 def exibeMenu():
     global matricula, matriculaAluno, matriculaProfessor
     while True:
         print('-' * 30, '|MENU PRINCIPAL|', '-' * 30)
         print('Bem-vindo(a) ao sistema escolar "Arte de Educar".')
-        print('1 - Alunos.')
-        print('Opção 4 - Cadastrar professor.')
-        print('Opção 5 - Consultar professor.')
-        print('Opção 6 - Finalizar programa.')
+        print('Opção 1 - Alunos.')
+        print('Opção 2 - Professores.')
+        
         print('-' * 79)
         try:
             opcao = int(input('Digite sua opção desejada: '))
@@ -356,7 +360,7 @@ def exibeMenu():
             if opcao == 1:
                 exibeMenuAluno()
             elif opcao == 2:
-
+                exibeMenuProfessor()
             elif opcao == 3:
 
             elif opcao == 4:

@@ -148,11 +148,89 @@ def excluirProfessor():
         print('Primeiro cadastre professores para poder excluí-los.')
 
 
+def atualizarProfessor(matricula):
+    global materia, tipoEnsinoProfessor
+    tipoEnsinoProfessor = ''
+    materia = ''
+
+    nomeProfessor = str(input('Digite o nome do professor: '))
+
+    while not nomeProfessor.isalpha():
+        print('Dígito incorreto!\nDigite somente letras e acentos.')
+        nomeProfessor = str(input('Digite o nome: '))
+
+    sobrenomeProfessor = str(input('Digite o sobrenome do professor: '))
+
+    while not sobrenomeProfessor.isalpha():
+        print('Dígito incorreto!\nDigite somente letras e acentos.')
+        sobrenomeProfessor = str(input('Digite o sobrenome: '))
+
+    while True:
+        try:
+            tipoEnsinoProfessor = int(input('Opção 1 - Ensino Fundamental\nOpção 2 - Ensino Médio\nDigite sua opção '
+                                            'desejada: '))
+
+            if tipoEnsinoProfessor == 1:
+                tipoEnsinoProfessor = 'ensino fundamental'
+                print('Opção 1 - Português.')
+                print('Opção 2 - Ciências.')
+                print('Opção 3 - História.')
+
+                materia = int(input('Digite a matéria desejada: '))
+
+                if materia == 1:
+                    materia = 'Português'
+                elif materia == 2:
+                    materia = 'Ciências'
+                elif materia == 3:
+                    materia = 'História'
+
+                break
+            elif tipoEnsinoProfessor == 2:
+                tipoEnsinoProfessor = 'ensino médio'
+                print('Opção 1 - Física.')
+                print('Opção 2 - Química.')
+                print('Opção 3 - Filosofia.')
+
+                materia = int(input('Digite a matéria desejada: '))
+
+                if materia == 1:
+                    materia = 'Física'
+                elif materia == 2:
+                    materia = 'Química'
+                elif materia == 3:
+                    materia = 'Filosofia'
+
+                break
+        except ValueError:
+            print('Dígite somente número.')
+            continue
+
+    nomeProfessor = nomeProfessor.upper()
+    sobrenomeProfessor = sobrenomeProfessor.upper()
+    tipoEnsinoProfessor = tipoEnsinoProfessor.upper()
+    materia = materia.upper()
+
+    professor = {
+        'Matrícula': matricula,
+        'Nome': nomeProfessor,
+        'Sobrenome': sobrenomeProfessor,
+        'Ensino': tipoEnsinoProfessor,
+        'Matéria': materia
+    }
+
+    professores.pop()
+    professores.append(professor.copy())
+
+    print('Informações atualizadas com sucesso!')
+    print('-' * 79)
+
+
 def alterarProfessor():
     if len(professores) > 0:
         while True:
             print('-' * 30, '|ATUALIZAR PROFESSOR|', '-' * 30)
-            print('Opção 1 - Atualizar informações do aluno.')
+            print('Opção 1 - Atualizar informações do professor.')
             print('Opção 2 - Voltar.')
 
             try:
@@ -161,7 +239,7 @@ def alterarProfessor():
                     matricula = int(input('Digite a matrícula do professor: '))
                     for professor in professores:
                         if professor['Matrícula'] == matricula:
-                            atualizarAluno(matricula)
+                            atualizarProfessor(matricula)
                             print('Informações atualizadas com sucesso!')
                             break
                         else:

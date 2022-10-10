@@ -115,6 +115,39 @@ def consultarProfessor():
         print('Primeiro cadastre professores para poder consulta-los.')
 
 
+def excluirProfessor():
+    if len(professores) > 0:
+        while True:
+            print('-' * 30, '|EXCLUIR PROFESSOR|', '-' * 30)
+            print('Opção 1 - Excluir todos os professores.')
+            print('Opção 2 - Excluir um professor.')
+            print('Opção 3 - Voltar.')
+
+            try:
+                opcao = int(input('Digite sua opção desejada: '))
+                if opcao == 1:
+                    for professor in professores:
+                        professores.clear()
+                        print('Professores excluídos com sucesso!')
+                elif opcao == 2:
+                    matricula = int(input('Digite a matrícula do professor: '))
+                    for professor in professores:
+                        if professor['Matrícula'] == matricula:
+                            professores.remove(matricula)
+                            print('Professor excluído com sucesso!')
+                        else:
+                            print('Matrícula inválida!')
+                elif opcao == 3:
+                    exibeMenuProfessor()
+                else:
+                    print('Dígito inválido!\nDigite alguma das opções.')
+
+            except ValueError:
+                print('Dígito inválido!\nDigite somente números.')
+    else:
+        print('Primeiro cadastre professores para poder excluí-los.')
+
+
 def exibeMenuProfessor():
     global matriculaProfessor
     while True:
@@ -133,6 +166,7 @@ def exibeMenuProfessor():
             elif opcao == 2:
                 consultarProfessor()
             elif opcao == 3:
+                excluirProfessor()
                 from principal import exibeMenu
                 exibeMenu()
             else:

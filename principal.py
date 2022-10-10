@@ -121,9 +121,6 @@ def finalizarPrograma():
     print('Programa finalizado.')
 
 
-
-
-
 def exibeMenuProfessor():
     global matriculaProfessor
     while True:
@@ -145,7 +142,6 @@ def exibeMenuProfessor():
                 print('Opção inválida!!')
         except ValueError:
             print('Dígito inválido!\nDigite somente as opções presentes.')
-
 
 
 def exibeMenu():

@@ -1,8 +1,7 @@
 from aluno import exibeMenuAluno
 
-matriculaAluno = 100
 matriculaProfessor = 800
-alunos = []
+
 professores = []
 
 

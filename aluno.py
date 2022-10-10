@@ -1,6 +1,7 @@
 matriculaAluno = 100
 alunos = []
 
+
 def cadastrarAluno(matricula):
     print('-' * 30, '|CADASTRAR ALUNO|', '-' * 30)
 
@@ -193,6 +194,7 @@ def cadastrarNota():
                 print('Dígito inválido!\nDigite somente números.')
     else:
         print('Primeiro cadastre alunos para poder cadastrar notas.')
+
 
 def excluirAluno():
     if len(alunos) > 0:

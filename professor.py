@@ -1,3 +1,8 @@
+matriculaProfessor = 800
+
+professores = []
+
+
 def cadastrarProfessor(matricula):
     global materia, tipoEnsinoProfessor
     tipoEnsinoProfessor = ''
@@ -100,7 +105,7 @@ def consultarProfessor():
                         else:
                             print('Matrícula inválida!')
                 elif opcao == 3:
-                    exibeMenuAluno()
+                    exibeMenuProfessor()
                 else:
                     print('Dígito inválido!\nDigite alguma das opções.')
 
@@ -126,6 +131,7 @@ def exibeMenuProfessor():
             elif opcao == 2:
                 consultarProfessor()
             elif opcao == 3:
+                from principal import exibeMenu
                 exibeMenu()
             else:
                 print('Opção inválida!!')

@@ -346,6 +346,7 @@ def exibeMenuAluno():
             elif opcao == 5:
                 cadastrarNota()
             elif opcao == 6:
+                from principal import exibeMenu
                 exibeMenu()
             else:
                 print('Opção inválida!!')

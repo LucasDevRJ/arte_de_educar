@@ -1,10 +1,6 @@
 from aluno import exibeMenuAluno
 from professor import exibeMenuProfessor
 
-matriculaProfessor = 800
-
-professores = []
-
 
 def finalizarPrograma():
     print('Programa finalizado.')

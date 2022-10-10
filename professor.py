@@ -120,8 +120,10 @@ def exibeMenuProfessor():
     while True:
         print('-' * 30, '|MENU DO PROFESSOR|', '-' * 30)
         print('Opção 1 - Cadastrar professor.')
-        print('Opção 2 - Consultar professor.')
-        print('Opção 3 - Voltar.')
+        print('Opção 2 - Excluir professor.')
+        print('Opção 3 - Alterar professor.')
+        print('Opção 4 - Consultar professor.')
+        print('Opção 5 - Voltar.')
 
         try:
             opcao = int(input('Digite a opção desejada: '))
